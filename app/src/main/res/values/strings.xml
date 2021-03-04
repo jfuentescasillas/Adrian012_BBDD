@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Adrian012_BBDD</string>
+    <string name="itemNoteButtonEdit">Edit</string>
+    <string name="itemNoteButtonDelete">Delete</string>
+    <string name="fragmentNotesListFabText">New Note</string>
+    <string name="fragmentNotesFormTextInputLayoutTitleHelperText">The maximum length for this field is 100 characters</string>
+    <string name="fragmentNotesFormTextInputLayoutBodyText">Content</string>
+    <string name="fragmentNotesFormTextInputLayoutTitleText">Title</string>
+    <string name="notesFormFragmentErrorEmptyField">The field can not be empty</string>
+</resources>
