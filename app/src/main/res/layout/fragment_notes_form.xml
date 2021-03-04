@@ -12,8 +12,10 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -21,6 +23,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/fragmentNotesFormTextInputLayoutTitle"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -37,13 +40,14 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/fragmentNotesFormTextInputEditTextTitle"
                         android:layout_width="match_parent"
-                        android:maxLength="100"
+                        android:layout_height="wrap_content"
                         android:inputType="text"
-                        android:layout_height="wrap_content" />
+                        android:maxLength="100" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/fragmentNotesFormTextInputLayoutBody"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -51,7 +55,6 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
                     android:hint="@string/fragmentNotesFormTextInputLayoutBodyText"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:counterEnabled="true"
                     app:counterMaxLength="2000"
                     app:errorEnabled="true"
@@ -63,9 +66,10 @@
                         android:id="@+id/fragmentNotesFormTextInputEditTextBody"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLength="2000"
-                        android:inputType="text"
-                        android:lines="10"/>
+                        android:gravity="start"
+                        android:inputType="textMultiLine"
+                        android:lines="10"
+                        android:maxLength="2000" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
@@ -76,6 +80,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
+                    android:text="@string/fragmentNotesFormButtonSave"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -84,5 +89,17 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/fragmentNotesProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/design_default_color_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

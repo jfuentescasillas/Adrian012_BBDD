@@ -7,4 +7,12 @@
     <string name="fragmentNotesFormTextInputLayoutBodyText">Content</string>
     <string name="fragmentNotesFormTextInputLayoutTitleText">Title</string>
     <string name="notesFormFragmentErrorEmptyField">The field can not be empty</string>
+    <string name="fragmentNotesFormButtonSave">Save</string>
+    <string name="notesFormButtonTextUpdate">Update</string>
+    <string name="notesFormButtonTextCreate">Create</string>
+    <string name="notesFormFragmentDialogTitle">Information</string>
+    <string name="notesFormFragmentDialogMessage">Note Saved</string>
+    <string name="notesFormFragmentDialogueButtonAccept">OK</string>
+    <string name="notesFormFragmentDialogMessageConfirmation">Data will be overwritten. Do you want to continue?</string>
+    <string name="notesFormFragmentDialogueButtonCancel">Cancel</string>
 </resources>

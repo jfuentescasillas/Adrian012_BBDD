@@ -3,8 +3,10 @@ package com.example.adrian012_bbdd.presentation.fragment.list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.adrian012_bbdd.R
 import com.example.adrian012_bbdd.base.BaseFragment
 import com.example.adrian012_bbdd.base.util.BaseExtraData
 import com.example.adrian012_bbdd.databinding.FragmentNotesListBinding
@@ -20,12 +22,48 @@ class NotesListFragment: BaseFragment<NotesListState, NotesListViewModel, Fragme
     lateinit var vm: NotesListViewModel
 
 
+    /**
+     * Setup Views
+     */
     override fun setupView(viewModel: NotesListViewModel) {
         vm = viewModel
 
-        setupRecyclerView()
         setupButton()
+        setupRecyclerView()
     }
+
+
+    /**
+     * Setup Views
+     */
+    fun setupButton() {
+        // When create a new Note, we don't pass any information since we'll have a blank Note to fill in
+        binding.fragmentNotesListFab.setOnClickListener{
+            findNavController().navigate(NotesListFragmentDirections.actionNotesListFragmentToNotesFormFragment())
+        }
+    }
+
+
+    fun setupRecyclerView() {
+        // When "Edit" button is clicked, we send the "item" (the content of the listFragment) to the FormFragment in order to modify it
+        mAdapter = NotesListAdapter(listOf(), object: NotesListAdapter.MyClicksListener {
+            override fun onEditButtonClicked(item: NoteDomainModel) {
+                findNavController().navigate(NotesListFragmentDirections.actionNotesListFragmentToNotesFormFragment(item))
+            }
+
+
+            override fun onDeleteButtonClicked(item: NoteDomainModel) {
+                vm.onActionDeleteNote(item)
+            }
+        })
+
+        binding.fragmentNotesListRecyclerView.apply {
+            layoutManager = LinearLayoutManager(requireActivity())
+            adapter = mAdapter
+            itemAnimator = DefaultItemAnimator()
+        }
+    }
+
 
     /**
      * Status
@@ -47,35 +85,5 @@ class NotesListFragment: BaseFragment<NotesListState, NotesListViewModel, Fragme
 
     override fun onError(dataError: Throwable) {
 
-    }
-
-
-    /**
-     * Setup Views
-     */
-    fun setupRecyclerView() {
-        mAdapter = NotesListAdapter(listOf(), object: NotesListAdapter.MyClicksListener {
-            override fun onEditButtonClicked(item: NoteDomainModel) {
-
-            }
-
-
-            override fun onDeleteButtonClicked(item: NoteDomainModel) {
-                vm.onActionDeleteNote(item)
-            }
-        })
-
-        binding.fragmentNotesListRecyclerView.apply {
-            layoutManager = LinearLayoutManager(requireActivity())
-            adapter = mAdapter
-            itemAnimator = DefaultItemAnimator()
-        }
-    }
-
-
-    fun setupButton() {
-        binding.fragmentNotesListFab.setOnClickListener{
-
-        }
     }
 }

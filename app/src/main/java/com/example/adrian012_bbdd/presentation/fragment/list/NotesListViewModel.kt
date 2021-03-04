@@ -13,11 +13,12 @@ class NotesListViewModel @Inject constructor(private val repository: NoteReposit
 
 
     override fun onStartFirstTime() {
+
+    }
+
+
+    override fun onResume() {
         executeCoroutines({
-            repository.insert(NoteDomainModel(title = "Sample of title 1", body = "Sample of body 1"))
-            repository.insert(NoteDomainModel(title = "Sample of title 2", body = "Sample of body 2"))
-            repository.insert(NoteDomainModel(title = "Sample of title 3", body = "Sample of body 3"))
-            repository.insert(NoteDomainModel(title = "Sample of title 4", body = "Sample of body 4"))
             val notes = repository.getAll()
 
             updateToNormalState(NotesListState(notes))
@@ -25,6 +26,7 @@ class NotesListViewModel @Inject constructor(private val repository: NoteReposit
 
         })
     }
+
 
     fun onActionDeleteNote(item: NoteDomainModel) {
         executeCoroutines({
